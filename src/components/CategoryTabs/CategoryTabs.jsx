@@ -1,9 +1,8 @@
 import "./CategoryTabs.css";
-import {Tile} from "../Tile/Tile.jsx";
 
 export function CategoryTabs({ categories, selectedCategory, onCategoryChange }) {
   return (
-    <nav>
+    <nav className="category-nav">
       {categories.map((cate) => (
           <button
               key={cate}

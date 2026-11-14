@@ -1,5 +1,6 @@
-import {tiles} from "./data/tiles";
+import {tiles, categories} from "./data/tiles";
 import {Tile} from "./components/Tile/Tile.jsx";
+import {CategoryTabs} from "./components/CategoryTabs/CategoryTabs.jsx";
 import {SentenceBar} from "./components/SentenceBar/SentenceBar.jsx";
 import './App.css'
 import {Volume2} from "lucide-react"
@@ -46,9 +47,9 @@ function App() {
                 <button onClick={emptySentenceHandler}>Clear</button>
                 <button className="speak-btn" onClick={speak}>Speak <Volume2/></button>
             </div>
-            
+            <CategoryTabs categories={categories} selectedCategory={category} onCategoryChange={setCategory}/>
             <div className="grid">
-                {tiles.map((tile) => (
+                {tiles.filter((tile) => tile.category === category).map((tile) => (
                     <Tile onTileClick={tileClickHandler}  key={tile.id} tile={tile}/>
                 ))}
             </div>
