@@ -1,0 +1,19 @@
+.tile {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 2px solid #333;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tile-emoji {
+  font-size: 2rem;
+}

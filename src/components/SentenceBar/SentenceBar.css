@@ -1,0 +1,59 @@
+.sentence-bar {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  background: #fff;
+  border: 2px solid #333;
+  border-radius: 12px;
+}
+
+.sentence-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sentence-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px 4px 14px;
+  font-size: 1.2rem;
+  color: #0c447c;
+  background: #e6f1fb;
+  border-radius: 8px;
+}
+
+.chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.chip-remove:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.sentence-hint {
+  margin: 0;
+  color: #666;
+}
+
+.tile:focus-visible,
+.chip-remove:focus-visible {
+  outline: 3px solid #185fa5;
+  outline-offset: 2px;
+}
