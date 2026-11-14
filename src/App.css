@@ -10,3 +10,25 @@
   gap: 12px;
 }
 
+.sentencebar-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  
+  button {
+    height: 34px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+  }
+}
+
+.speak-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
