@@ -7,6 +7,7 @@ import {useState} from "react";
 
 function App() {
     const [clickedWords, setClickedWords] = useState([]);
+    const [category, setCategory] = useState("Core")
 
     const tileClickHandler = (tile) => {
         setClickedWords(prev => [...prev, tile.label])
