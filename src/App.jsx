@@ -32,19 +32,23 @@ function App() {
         window.speechSynthesis.speak(utterance)
         
     }
-
+    
+    const removeWord = (index) => {
+        setClickedWords(prev => prev.filter((w, i) => i !== index))
+    }
+    
     return (
         <main className="app">
             <h1>AAC Board</h1>
             <div className="sentencebar-container">
-                <SentenceBar words={clickedWords}/>
+                <SentenceBar words={clickedWords} onRemoveWord={removeWord}/>
                 <button onClick={emptySentenceHandler}>Clear</button>
                 <button className="speak-btn" onClick={speak}>Speak <Volume2/></button>
             </div>
             
             <div className="grid">
                 {tiles.map((tile) => (
-                    <Tile onTileClick={tileClickHandler} key={tile.id} tile={tile}/>
+                    <Tile onTileClick={tileClickHandler}  key={tile.id} tile={tile}/>
                 ))}
             </div>
         </main>

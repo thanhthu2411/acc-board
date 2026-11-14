@@ -1,7 +1,7 @@
 import "./SentenceBar.css";
 import { X } from "lucide-react";
 
-export function SentenceBar({ words }) {
+export function SentenceBar({ words, onRemoveWord }) {
   return (
     <div className="sentence-bar" aria-label="Sentence" aria-live="polite">
       {words.length > 0 ? (
@@ -10,6 +10,7 @@ export function SentenceBar({ words }) {
             <li className="sentence-chip" key={i}>
               {w}
               <button
+                  onClick={() => onRemoveWord(i)}
                 type="button"
                 className="chip-remove"
                 aria-label={`Remove ${w}`}
