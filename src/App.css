@@ -45,3 +45,29 @@
   gap: 4px;
 }
 
+.credit {
+  margin-top: 32px;
+  padding-top: 12px;
+  border-top: 1px solid #ccc;
+  font-size: 13px;
+}
+
+/*speed*/
+
+.speed-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 360px;
+}
+
+.speed-row input[type="range"] {
+  flex: 1;
+  height: 32px;
+}
+
+.speed-value {
+  min-width: 3.5ch;
+  font-weight: 600;
+  text-align: right;
+}

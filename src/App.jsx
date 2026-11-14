@@ -54,7 +54,7 @@ function App() {
     const removeWord = (index) => {
         setClickedWords(prev => prev.filter((w, i) => i !== index))
     }
-
+    
     return (
         <main className="app">
             <h1>AAC Board</h1>
@@ -65,10 +65,26 @@ function App() {
                         <button onClick={emptySentenceHandler}>Clear</button>
                         <button className="speak-btn" onClick={speak}>Speak <Volume2/></button>
                     </div>
-                    <input className="volumne-input" type="range" min="0.5" max="1.5" step={"0.1"}
-                           value={speed}
-                           onChange={(e) => setSpeed(Number(e.target.value))}
+                </div>
+                
+            </div>
+
+            <div className="speed-control">
+                <label htmlFor="speed" className="speed-label">Speaking speed</label>
+                <div className="speed-row">
+                    <input
+                        id="speed"
+                        type="range"
+                        min="0.5"
+                        max="1.5"
+                        step="0.1"
+                        value={speed}
+                        onChange={(e) => setSpeed(Number(e.target.value))}
+                        aria-valuetext={`${speed.toFixed(1)} times normal speed`}
                     />
+                    <output htmlFor="speed" className="speed-value">
+                        {speed.toFixed(1)}x
+                    </output>
                 </div>
                 
             </div>
@@ -79,6 +95,23 @@ function App() {
                     <Tile onTileClick={tileClickHandler} key={tile.id} tile={tile}/>
                 ))}
             </div>
+            <footer className="credit">
+                <p>
+                    Pictograms by{" "}
+                    <a href="https://arasaac.org" target="_blank" rel="noreferrer">
+                        ARASAAC
+                    </a>{" "}
+                    (Government of Aragón, created by Sergio Palao), licensed under{" "}
+                    <a
+                        href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        CC BY-NC-SA
+                    </a>
+                    .
+                </p>
+            </footer>
         </main>
     );
 }
