@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 function App() {
     const [clickedWords, setClickedWords] = useState([]);
     const [category, setCategory] = useState("Core")
+    const [editMode, setEditMode] = useState(false)
     const [speed, setSpeed] = useState(() => {
         try {
             const saved = Number(localStorage.getItem("speed"));
@@ -26,7 +27,11 @@ function App() {
     }, [speed]);
 
     const tileClickHandler = (tile) => {
-        setClickedWords(prev => [...prev, tile.label])
+        if (editMode) {
+            console.log("edit", tile);
+        } else {
+            setClickedWords((prev) => [...prev, tile.label]);
+        }
     }
 
     const emptySentenceHandler = () => {
@@ -55,9 +60,27 @@ function App() {
         setClickedWords(prev => prev.filter((w, i) => i !== index))
     }
     
+    
     return (
         <main className="app">
-            <h1>AAC Board</h1>
+            <header className="app-header">
+                <h1>AAC Board</h1>
+                <button
+                    type="button"
+                    className={`edit-toggle ${editMode ? "on" : ""}`}
+                    aria-pressed={editMode}
+                    onClick={() => setEditMode(!editMode)}
+                >
+                    {editMode ? "Done editing" : "Edit board"}
+                </button>
+            </header>
+
+            {editMode && (
+                <p className="edit-banner" role="status">
+                    Editing: tap a tile to change it, or add a new one
+                </p>
+            )}
+            
             <div className="sentencebar-container">
                 <SentenceBar words={clickedWords} onRemoveWord={removeWord}/>
                 <div className="sentencebar-btns-container">
@@ -92,8 +115,14 @@ function App() {
             <CategoryTabs categories={categories} selectedCategory={category} onCategoryChange={setCategory}/>
             <div className="grid">
                 {tiles.filter((tile) => tile.category === category).map((tile) => (
-                    <Tile onTileClick={tileClickHandler} key={tile.id} tile={tile}/>
+                    <Tile onTileClick={tileClickHandler} key={tile.id} tile={tile} editMode={editMode}/>
                 ))}
+
+                {editMode && (
+                    <button type="button" className="tile add-tile">
+                        + Add tile
+                    </button>
+                )}
             </div>
             <footer className="credit">
                 <p>

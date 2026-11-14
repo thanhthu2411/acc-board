@@ -1,10 +1,10 @@
 
 import "./Tile.css"
 
-export function Tile({tile, onTileClick}) {
+export function Tile({tile, onTileClick, editMode}) {
 
     return (
-        <button className="tile" onClick={() => onTileClick(tile)}>
+        <button type="button" className={`tile ${editMode ? "editing" : ""}`} onClick={() => onTileClick(tile)}>
             {tile.image ? (
                 <img className="tile-img" src={tile.image} alt="" />
             ) : (
