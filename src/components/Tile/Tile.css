@@ -17,3 +17,9 @@
 .tile-emoji {
   font-size: 2rem;
 }
+
+.tile-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
